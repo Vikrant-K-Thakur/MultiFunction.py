@@ -14,18 +14,150 @@ def calculator():
 
 
 def coding_problem():
-    print("Welcome to the Coding Problem!")
-    problem = "Write a Python function to calculate the factorial of a number."
-    solution = """
-def factorial(n):
-    if n == 0 or n == 1:
-        return 1
-    else:
-        return n * factorial(n - 1)
-"""
-    print(f"Problem: {problem}")
-    print("Solution:")
-    print(solution)
+    def python_problem():
+        dict_P = {
+            "Program to Print Hello world!": '''print("Hello World!")''',
+            "Program to find maximum of three numbers": '''a = int(input("Enter first number: "))\nb = int(input("Enter second number: "))\nc = int(input("Enter third number: "))\nif a > b and a > c:\n    print("First number is the greatest")\nelif b > a and b > c:\n    print("Second number is the greatest")\nelse:\n    print("Third number is the greatest")''',
+            "Program to check if a year is leap": '''year = int(input("Enter a year: "))\nif year % 4 == 0 and (year % 100 != 0 or year % 400 == 0):\n    print("Leap year")\nelse:\n    print("Not a leap year")''',
+            "Program to find the area of a circle": '''r = float(input("Enter radius: "))\narea = 3.14 * r * r\nprint(f"Area of the circle: {area}")''',
+            "Program to find the area of a triangle": '''b = float(input("Enter base: "))\nh = float(input("Enter height: "))\narea = 0.5 * b * h\nprint(f"Area of the triangle: {area}")''',
+            "Program to display a number in reverse order": '''num = int(input("Enter a number: "))\nrev = 0\nwhile num > 0:\n    rev = rev * 10 + num % 10\n    num = num // 10\nprint(f"Reversed number: {rev}")'''
+        }
+
+        problem = random.choice(list(dict_P.keys()))
+        solution = dict_P[problem]
+
+        print(f"Problem: {problem}")
+        show_solution = input("Do you want to see the solution? (yes/no): ").strip().lower()
+        if show_solution == "yes":
+            print(f"Solution:\n{solution}")
+        continue_python = input("Do you want to continue with python problems? (yes/no): ").strip().lower()
+        if continue_python == "yes":
+            python_problem()
+
+    def html_problem():
+        dict_HTML = {
+            "Create a simple HTML document": '''<!DOCTYPE html>\n<html>\n<head>\n    <title>Simple HTML</title>\n</head>\n<body>\n    <h1>Hello World!</h1>\n</body>\n</html>''',
+            "Create a hyperlink": '''<a href=\"https://www.example.com\">Click Here</a>''',
+            "Create an ordered list": '''<!DOCTYPE html>\n<html>\n<body>\n<ol>\n  <li>Item 1</li>\n  <li>Item 2</li>\n  <li>Item 3</li>\n</ol>\n</body>\n</html>''',
+            "Create an unordered list": '''<!DOCTYPE html>\n<html>\n<body>\n<ul>\n  <li>Item 1</li>\n  <li>Item 2</li>\n  <li>Item 3</li>\n</ul>\n</body>\n</html>''',
+            "Insert an image": '''<!DOCTYPE html>\n<html>\n<body>\n<img src=\"https://www.example.com/image.jpg\" alt=\"Example Image\" width=\"300\" height=\"200\">\n</body>\n</html>''',
+            "Create a table": '''<!DOCTYPE html>\n<html>\n<body>\n<table border=\"1\">\n  <tr>\n    <th>Header 1</th>\n    <th>Header 2</th>\n  </tr>\n  <tr>\n    <td>Data 1</td>\n    <td>Data 2</td>\n  </tr>\n  <tr>\n    <td>Data 3</td>\n    <td>Data 4</td>\n  </tr>\n</table>\n</body>\n</html>''',
+            "Embed a video": '''<!DOCTYPE html>\n<html>\n<body>\n<video width=\"320\" height=\"240\" controls>\n  <source src=\"movie.mp4\" type=\"video/mp4\">\n  Your browser does not support the video tag.\n</video>\n</body>\n</html>'''
+        }
+        problem, solution = random.choice(list(dict_HTML.items()))
+        print(f"Problem: {problem}")
+        show_solution = input("Do you want to see the solution? (yes/no): ").strip().lower()
+        if show_solution == "yes":
+            print(f"Solution:\n{solution}")
+        continue_python = input("Do you want to continue with html problems? (yes/no): ").strip().lower()
+        if continue_python == "yes":
+            html_problem()
+
+    def css_problem():
+        dict_CSS = {
+            "Change background color": '''body {\n    background-color: lightblue;\n}''',
+            "Create a centered text": '''div {\n    text-align: center;\n    margin-top: 50px;\n}''',
+            "Add border to an element": '''div {\n    border: 2px solid black;\n    padding: 10px;\n}''',
+            "Create a hover effect": '''a:hover {\n    color: red;\n    text-decoration: underline;\n}''',
+            "Style a button": '''button {\n    background-color: green;\n    color: white;\n    padding: 10px 20px;\n    border: none;\n    border-radius: 5px;\n    cursor: pointer;\n}''',
+            "Make an image responsive": '''img {\n    max-width: 100%;\n    height: auto;\n}''',
+            "Center an element vertically and horizontally": '''div {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    height: 100vh;\n}'''
+        }
+        problem, solution = random.choice(list(dict_CSS.items()))
+        print(f"Problem: {problem}")
+        show_solution = input("Do you want to see the solution? (yes/no): ").strip().lower()
+        if show_solution == "yes":
+            print(f"Solution:\n{solution}")
+        continue_python = input("Do you want to continue with css problems? (yes/no): ").strip().lower()
+        if continue_python == "yes":
+            css_problem()
+
+    def js_problem():
+        dict_JS = {
+            "Create a simple alert": '''alert("Hello World!");''',
+            "Add two numbers": '''let a = prompt("Enter first number: ");\nlet b = prompt("Enter second number: ");\nalert("Sum: " + (parseInt(a) + parseInt(b)));''',
+            "Change text of an element": '''document.getElementById("myElement").innerText = "Text has been changed!";''',
+            "Hide an element on button click": '''document.getElementById("myButton").addEventListener("click", function() {\n    document.getElementById("myElement").style.display = "none";\n});''',
+            "Validate an email address": '''function validateEmail(email) {\n    const regex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\n    return regex.test(email);\n}\nalert(validateEmail("test@example.com"));''',
+            "Generate a random number": '''let randomNumber = Math.floor(Math.random() * 100) + 1;\nalert("Random Number: " + randomNumber);''',
+            "Toggle class on an element": '''document.getElementById("myElement").classList.toggle("active");'''
+        }
+        problem, solution = random.choice(list(dict_JS.items()))
+        print(f"Problem: {problem}")
+        show_solution = input("Do you want to see the solution? (yes/no): ").strip().lower()
+        if show_solution == "yes":
+            print(f"Solution:\n{solution}")
+        continue_python = input("Do you want to continue with js problems? (yes/no): ").strip().lower()
+        if continue_python == "yes":
+            js_problem()
+
+    def c_problem():
+        dict_C = {
+            "Print Hello World": '''#include <stdio.h>\nint main() {\n    printf("Hello World!\\n");\n    return 0;\n}''',
+            "Find the sum of two numbers": '''#include <stdio.h>\nint main() {\n    int a, b;\n    printf("Enter two numbers: ");\n    scanf("%d %d", &a, &b);\n    printf("Sum: %d\\n", a + b);\n    return 0;\n}''',
+            "Check if a number is even or odd": '''#include <stdio.h>\nint main() {\n    int num;\n    printf("Enter a number: ");\n    scanf("%d", &num);\n    if (num % 2 == 0)\n        printf("%d is even.\\n", num);\n    else\n        printf("%d is odd.\\n", num);\n    return 0;\n}''',
+            "Find the factorial of a number": '''#include <stdio.h>\nint main() {\n    int n, i;\n    unsigned long long factorial = 1;\n    printf("Enter a positive integer: ");\n    scanf("%d", &n);\n    for (i = 1; i <= n; ++i) {\n        factorial *= i;\n    }\n    printf("Factorial of %d = %llu\\n", n, factorial);\n    return 0;\n}''',
+            "Reverse a number": '''#include <stdio.h>\nint main() {\n    int num, reversed = 0, remainder;\n    printf("Enter an integer: ");\n    scanf("%d", &num);\n    while (num != 0) {\n        remainder = num % 10;\n        reversed = reversed * 10 + remainder;\n        num /= 10;\n    }\n    printf("Reversed number = %d\\n", reversed);\n    return 0;\n}''',
+            "Check if a number is prime": '''#include <stdio.h>\nint main() {\n    int n, i, flag = 1;\n    printf("Enter a positive integer: ");\n    scanf("%d", &n);\n    if (n <= 1) {\n        flag = 0;\n    }\n    for (i = 2; i <= n / 2; ++i) {\n        if (n % i == 0) {\n            flag = 0;\n            break;\n        }\n    }\n    if (flag == 1)\n        printf("%d is a prime number.\\n", n);\n    else\n        printf("%d is not a prime number.\\n", n);\n    return 0;\n}''',
+            "Find the largest of three numbers": '''#include <stdio.h>\nint main() {\n    int a, b, c;\n    printf("Enter three numbers: ");\n    scanf("%d %d %d", &a, &b, &c);\n    if (a >= b && a >= c)\n        printf("Largest number is %d\\n", a);\n    else if (b >= a && b >= c)\n        printf("Largest number is %d\\n", b);\n    else\n        printf("Largest number is %d\\n", c);\n    return 0;\n}'''
+        }
+
+        problem, solution = random.choice(list(dict_C.items()))
+        print(f"Problem: {problem}")
+        show_solution = input("Do you want to see the solution? (yes/no): ").strip().lower()
+        if show_solution == "yes":
+            print(f"Solution:\n{solution}")
+        continue_python = input("Do you want to continue with c problems? (yes/no): ").strip().lower()
+        if continue_python == "yes":
+            c_problem()
+
+    def cpp_problem():
+        dict_CPP = {
+            "Print Hello World": '''#include <iostream>\nusing namespace std;\nint main() {\n    cout << "Hello World!" << endl;\n    return 0;\n}''',
+            "Find the largest of three numbers": '''#include <iostream>\nusing namespace std;\nint main() {\n    int a, b, c;\n    cout << "Enter three numbers: ";\n    cin >> a >> b >> c;\n    if (a > b && a > c)\n        cout << "First number is the greatest" << endl;\n    else if (b > a && b > c)\n        cout << "Second number is the greatest" << endl;\n    else\n        cout << "Third number is the greatest" << endl;\n    return 0;\n}''',
+            "Check if a number is even or odd": '''#include <iostream>\nusing namespace std;\nint main() {\n    int num;\n    cout << "Enter a number: ";\n    cin >> num;\n    if (num % 2 == 0)\n        cout << num << " is even." << endl;\n    else\n        cout << num << " is odd." << endl;\n    return 0;\n}''',
+            "Calculate factorial of a number": '''#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    unsigned long long factorial = 1;\n    cout << "Enter a positive integer: ";\n    cin >> n;\n    for (int i = 1; i <= n; ++i) {\n        factorial *= i;\n    }\n    cout << "Factorial of " << n << " = " << factorial << endl;\n    return 0;\n}''',
+            "Reverse a number": '''#include <iostream>\nusing namespace std;\nint main() {\n    int num, reversed = 0, remainder;\n    cout << "Enter an integer: ";\n    cin >> num;\n    while (num != 0) {\n        remainder = num % 10;\n        reversed = reversed * 10 + remainder;\n        num /= 10;\n    }\n    cout << "Reversed number = " << reversed << endl;\n    return 0;\n}''',
+            "Check if a number is prime": '''#include <iostream>\nusing namespace std;\nint main() {\n    int n, i;\n    bool isPrime = true;\n    cout << "Enter a positive integer: ";\n    cin >> n;\n    if (n <= 1) {\n        isPrime = false;\n    } else {\n        for (i = 2; i <= n / 2; ++i) {\n            if (n % i == 0) {\n                isPrime = false;\n                break;\n            }\n        }\n    }\n    if (isPrime)\n        cout << n << " is a prime number." << endl;\n    else\n        cout << n << " is not a prime number." << endl;\n    return 0;\n}''',
+            "Swap two numbers using a temporary variable": '''#include <iostream>\nusing namespace std;\nint main() {\n    int a, b, temp;\n    cout << "Enter two numbers: ";\n    cin >> a >> b;\n    temp = a;\n    a = b;\n    b = temp;\n    cout << "After swapping: a = " << a << ", b = " << b << endl;\n    return 0;\n}'''
+        }
+        problem, solution = random.choice(list(dict_CPP.items()))
+        print(f"Problem: {problem}")
+        show_solution = input("Do you want to see the solution? (yes/no): ").strip().lower()
+        if show_solution == "yes":
+            print(f"Solution:\n{solution}")
+        continue_python = input("Do you want to continue with c++ problems? (yes/no): ").strip().lower()
+        if continue_python == "yes":
+            cpp_problem()
+
+    problems = {
+        1: ("Python", python_problem),
+        2: ("HTML", html_problem),
+        3: ("CSS", css_problem),
+        4: ("JavaScript", js_problem),
+        5: ("C", c_problem),
+        6: ("C++", cpp_problem)
+    }
+
+    while True:
+        print("\nWelcome to the Coding Problem Generator!")
+        for key, (name, _) in problems.items():
+            print(f"{key}. {name}")
+        print("7. Exit")
+
+        try:
+            choice = int(input("Please select the language you want to solve the problem in: "))
+            if choice == 7:
+                print("Thank you for using the Coding Problem Generator!")
+                break
+            elif choice in problems:
+                print(f"\nYou selected {problems[choice][0]}!")
+                problems[choice][1]()
+            else:
+                print("Invalid choice. Please select a valid option.")
+        except ValueError:
+            print("Invalid input. Please enter a number.")
 
 
 def maths_quiz():
@@ -443,6 +575,9 @@ def hand_cricket():
     play_game()
 
 
+def to_do_list():
+    pass
+
         
 def main():
     while True:
@@ -451,8 +586,9 @@ def main():
         print("2. Coding Problem")
         print("3. Maths Quiz")
         print("4. Games")
-        print("5. Exit")
-        choice = input("Choose an option(1, 2, 3, 4, 5): ")
+        print("5. To-Do List")
+        print("6. Exit")
+        choice = input("Choose an option(1, 2, 3, 4, 5, 6): ")
 
         if choice == '1':
             calculator()
@@ -462,8 +598,10 @@ def main():
             maths_quiz()
         elif choice == '4':
             games()
-
         elif choice == '5':
+            to_do_list()
+
+        elif choice == '6':
             print("Goodbye!")
             break
         else:
