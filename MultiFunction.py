@@ -126,8 +126,8 @@ def coding_problem():
         print(f"Problem: {problem}")
         show_solution = input("Do you want to see the solution? (yes/no): ").strip().lower()
         if show_solution == "yes":
-            print(f"Solution:\n{solution}")
-        continue_python = input("Do you want to continue with c++ problems? (yes/no): ").strip().lower()
+            print(f"\nSolution:\n{solution}")
+        continue_python = input("\nDo you want to continue with c++ problems? (yes/no): \n").strip().lower()
         if continue_python == "yes":
             cpp_problem()
 
@@ -202,7 +202,7 @@ def games():
         print("5. Hand Cricket")
         print("6. Back to Main Menu")
 
-        choice = input("Choose an option(1, 2, 3, 4, 5, 6): ")
+        choice = input("Choose an option(1, 2, 3, 4, 5 or 6 for exit): ")
 
         if choice == '1':
             guess_the_number()
@@ -211,8 +211,7 @@ def games():
         elif choice == '3':
             rock_paper_scissors()
         elif choice == '4':
-            guess_the_number()
-            # tic_tac_toe()
+            tic_tac_toe()
         elif choice == '5':
             hand_cricket()
         elif choice == '6':
@@ -464,10 +463,12 @@ def tic_tac_toe():
                 if cwin != -1:
                     print("Draw!!")
                 
-                t_t_t = input("Do you want to play again? (yes/no): ").lower()
-                if t_t_t != "yes":
-                    print("Thank you for playing!")
-                    break
+            t_t_t = input("Do you want to play again? (yes/no): ").lower()
+            if t_t_t != "yes":
+                print("Thank you for playing!")
+            else:
+                T_T_T()
+
     T_T_T()
 
 def hand_cricket():
@@ -578,6 +579,9 @@ def hand_cricket():
 def to_do_list():
     pass
 
+def weakly_study_planner():
+    pass
+
         
 def main():
     while True:
@@ -587,8 +591,9 @@ def main():
         print("3. Maths Quiz")
         print("4. Games")
         print("5. To-Do List")
-        print("6. Exit")
-        choice = input("Choose an option(1, 2, 3, 4, 5, 6): ")
+        print("6. Weakly Study Planner")
+        print("7. Exit")
+        choice = input("Choose an option(1, 2, 3, 4, 5, 6 or 7 to exit): ")
 
         if choice == '1':
             calculator()
@@ -600,8 +605,11 @@ def main():
             games()
         elif choice == '5':
             to_do_list()
-
         elif choice == '6':
+            weakly_study_planner()
+
+
+        elif choice == '7':
             print("Goodbye!")
             break
         else:
@@ -609,3 +617,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
