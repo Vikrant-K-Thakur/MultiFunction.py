@@ -223,26 +223,26 @@ def guess_the_number():
     print("Welcome to Guess the Number!")
     number = random.randint(1, 50)
     attempts = 0
-    def guess():
-        while True:
-            try:
-                guess = int(input("Guess a number between 1 and 50: "))
-                attempts += 1
-                if guess > number:
-                    print("Lower!")
-                elif guess < number:
-                    print("Higher!")
-                else:
-                    print(f"Correct! You guessed it in {attempts} attempts.")
-                    break
-            except ValueError:
-                print("Invalid input. Please enter a number.")
+    while True:
+        try:
+            guess = int(input("Guess a number between 1 and 50: "))
+            attempts += 1
+            if guess > number:
+                print("Lower!")
+            elif guess < number:
+                print("Higher!")
+            else:
+                print(f"Correct! You guessed it in {attempts} attempts.")
+                break
+        except ValueError:
+            print("Invalid input. Please enter a number.")
 
-        G_T_N = input("Do you want to play again? (yes/no): ").lower()
-        if G_T_N == 'yes':
-            guess_the_number()
-        else:
-            print("Thanks for playing!")
+    G_T_N = input("Do you want to play again? (yes/no): ").lower()
+    if G_T_N == 'yes':
+        guess() 
+    else:
+        print("Thanks for playing!")
+    guess()
 
 def hangman():
     stages = [
@@ -391,27 +391,24 @@ def rock_paper_scissors():
     R_P_S()
 
 def tic_tac_toe():
-    def T_T_T():       
-        def sum(a, b, c):
-            return a + b + c
-
+    def T_T_T():
         def printBoard(xState, zState):
-            zero = 'X' if xState[0] else ('O' if zState[0] else 0)    
-            one = 'X' if xState[1] else ('O' if zState[1] else 1)           
-            two = 'X' if xState[2] else ('O' if zState[2] else 2)
-            three = 'X' if xState[3] else ('O' if zState[3] else 3)
-            four = 'X' if xState[4] else ('O' if zState[4] else 4)
-            five = 'X' if xState[5] else ('O' if zState[5] else 5)
-            six = 'X' if xState[6] else ('O' if zState[6] else 6)
-            seven = 'X' if xState[7] else ('O' if zState[7] else 7)
-            eight = 'X' if xState[8] else ('O' if zState[8] else 8)
-
-            print(f"{zero} | {one} | {two}")
+            board = [
+                'X' if xState[0] else ('O' if zState[0] else '0'),
+                'X' if xState[1] else ('O' if zState[1] else '1'),
+                'X' if xState[2] else ('O' if zState[2] else '2'),
+                'X' if xState[3] else ('O' if zState[3] else '3'),
+                'X' if xState[4] else ('O' if zState[4] else '4'),
+                'X' if xState[5] else ('O' if zState[5] else '5'),
+                'X' if xState[6] else ('O' if zState[6] else '6'),
+                'X' if xState[7] else ('O' if zState[7] else '7'),
+                'X' if xState[8] else ('O' if zState[8] else '8'),
+            ]
+            print(f"{board[0]} | {board[1]} | {board[2]}")
             print("--|---|--")
-            print(f"{three} | {four} | {five}")
+            print(f"{board[3]} | {board[4]} | {board[5]}")
             print("--|---|--")
-            print(f"{six} | {seven} | {eight}")
-
+            print(f"{board[6]} | {board[7]} | {board[8]}")
 
         def checkwin(xState, zState):
             wins = [
@@ -421,21 +418,16 @@ def tic_tac_toe():
             ]
             
             for win in wins:
-                if sum(xState[win[0]], xState[win[1]], xState[win[2]]) == 3:
-                    print("X Won the match")
+                if xState[win[0]] == 1 and xState[win[1]] == 1 and xState[win[2]] == 1:
                     return 1
-                if sum(zState[win[0]], zState[win[1]], zState[win[2]]) == 3:
-                    print("O Won the match")
-                    return 0
-
-            return -1
-
+                if zState[win[0]] == 1 and zState[win[1]] == 1 and zState[win[2]] == 1:
+                    return 0 
+            return -1  
 
         if __name__ == "__main__":
             xState = [0, 0, 0, 0, 0, 0, 0, 0, 0]
-            zState = [0, 0, 0, 0, 0, 0, 0, 0, 0]
-
-            turn = 1 
+            zState = [0, 0, 0, 0, 0, 0, 0, 0, 0]  
+            turn = 1  
 
             print("Welcome to Tic Tac Toe!")
 
@@ -444,30 +436,47 @@ def tic_tac_toe():
 
                 if turn == 1:
                     print("X's Chance")
-                    value = int(input("Please enter a value (0-8): "))
-                    if xState[value] == 0 and zState[value] == 0:
-                        xState[value] = 1
-                        turn = 0  
-                    else:
-                        print("Invalid move, try again.")
                 else:
                     print("O's Chance")
+
+                try:
                     value = int(input("Please enter a value (0-8): "))
+                    if value < 0 or value > 8:
+                        print("Invalid input. Please enter a number between 0 and 8.")
+                        continue
                     if xState[value] == 0 and zState[value] == 0:
-                        zState[value] = 1
-                        turn = 1  
+                        if turn == 1:
+                            xState[value] = 1
+                            turn = 0 
+                        else:
+                            zState[value] = 1
+                            turn = 1  
                     else:
                         print("Invalid move, try again.")
+                        continue
+                except ValueError:
+                    print("Invalid input. Please enter a valid number.")
+                    continue
 
                 cwin = checkwin(xState, zState)
-                if cwin != -1:
-                    print("Draw!!")
-                
+                if cwin == 1:
+                    printBoard(xState, zState)
+                    print("X Won the match!")
+                    break
+                elif cwin == 0:
+                    printBoard(xState, zState)
+                    print("O Won the match!")
+                    break
+                elif all(xState[i] == 1 or zState[i] == 1 for i in range(9)):
+                    printBoard(xState, zState)
+                    print("It's a draw!")
+                    break
+
             t_t_t = input("Do you want to play again? (yes/no): ").lower()
-            if t_t_t != "yes":
-                print("Thank you for playing!")
-            else:
+            if t_t_t == "yes":
                 T_T_T()
+            else:
+                print("Thank you for playing!")
 
     T_T_T()
 
