@@ -1,3 +1,4 @@
+
 import random
 
 def calculator():
@@ -484,7 +485,6 @@ def hand_cricket():
     print("Let's play a game of Hand Cricket!")
     print("Note: You can only enter numbers between 1 and 6 as per the instructions.")
     def play_game():
-        
         while True:
             option = int(input("Enter your option (1 for Batting, 2 for Bowling): "))
             if option not in [1, 2]:
@@ -585,13 +585,135 @@ def hand_cricket():
     play_game()
 
 
-def to_do_list():
-    pass
+def To_Do_List():
+    def to_do_list():
+        print("Welcome to your to-do list!")
+        print("You can add, delete, write and view tasks here.")
 
-def weakly_study_planner():
-    pass
+        pages = {}  # This is where pages (task lists) are stored.
+        current_page = None  # Current selected page.
 
-        
+        def add_page():
+            nonlocal pages
+            page_name = f"Page {len(pages) + 1}"
+            pages[page_name] = []
+            print(f"Added {page_name}")
+
+        def delete_page():
+            nonlocal pages, current_page
+            if not current_page:
+                print("No page selected to delete!")
+                return
+            del pages[current_page]
+            current_page = None
+            print("Page deleted")
+
+        def change_page():
+            nonlocal pages, current_page
+            if not pages:
+                print("No pages available. Add a page first.")
+                return
+
+            print("Available Pages:")
+            for idx, page in enumerate(pages.keys(), start=1):
+                print(f"{idx}. {page}")
+
+            try:
+                choice = int(input("Select a page number: ")) - 1
+                current_page = list(pages.keys())[choice]
+                print(f"Switched to {current_page}")
+            except (IndexError, ValueError):
+                print("Invalid selection. Try again.")
+
+        def add_task():
+            nonlocal pages, current_page
+            if not current_page:
+                print("No page selected! Please select a page first.")
+                return
+
+            task = input("Enter task: ").strip()
+            if task:
+                pages[current_page].append({"task": task, "completed": False})
+                print(f"Task '{task}' added to {current_page}")
+
+        def mark_complete():
+            nonlocal pages, current_page
+            if not current_page:
+                print("No page selected! Please select a page first.")
+                return
+
+            if not pages[current_page]:
+                print("No tasks in this page!")
+                return
+
+            print("Tasks:")
+            for idx, task in enumerate(pages[current_page], start=1):
+                status = "Completed" if task["completed"] else "Pending"
+                print(f"{idx}. {task['task']} - {status}")
+
+            try:
+                task_choice = int(input("Select task number to mark as complete: ")) - 1
+                if 0 <= task_choice < len(pages[current_page]):
+                    pages[current_page][task_choice]["completed"] = True
+                    print("Task marked as complete.")
+                else:
+                    print("Invalid task number.")
+            except ValueError:
+                print("Invalid selection. Try again.")
+
+        def show_status():
+            nonlocal pages, current_page
+            if not current_page:
+                print("No page selected!")
+                return
+
+            all_tasks = len(pages[current_page])
+            completed_tasks = sum(1 for task in pages[current_page] if task["completed"])
+
+            if all_tasks == 0:
+                print("No tasks in this page.")
+            elif all_tasks == completed_tasks:
+                print("Whole work is completed.")
+            else:
+                print(f"{completed_tasks} out of {all_tasks} tasks completed.")
+
+        while True:
+            print("\nTo-Do List Application")
+            print("1. Add Page")
+            print("2. Delete Page")
+            print("3. Select Page")
+            print("4. Add Task")
+            print("5. Mark Task as Complete")
+            print("6. Show Task Status")
+            print("7. Exit")
+            choice = input("Choose an option: ")
+
+            if choice == "1":
+                add_page()
+            elif choice == "2":
+                delete_page()
+            elif choice == "3":
+                change_page()
+            elif choice == "4":
+                add_task()
+            elif choice == "5":
+                mark_complete()
+            elif choice == "6":
+                show_status()
+            elif choice == "7":
+                print("Exiting the application.")
+                break
+            else:
+                print("Invalid choice! Please try again.")
+
+        play_again1 = input("Do you want to continue? (yes/no): ").lower()
+        if play_again1 == "yes":
+            To_Do_List()
+        elif play_again1 == "no":
+            print("Thanks for playing")
+
+    to_do_list()
+
 def main():
     while True:
         print("\nPython Mobile Menu:")
@@ -600,9 +722,8 @@ def main():
         print("3. Maths Quiz")
         print("4. Games")
         print("5. To-Do List")
-        print("6. Weakly Study Planner")
-        print("7. Exit")
-        choice = input("Choose an option(1, 2, 3, 4, 5, 6 or 7 to exit): ")
+        print("6. Exit")
+        choice = input("Choose an option(1, 2, 3, 4, 5 or 6 to exit): ")
 
         if choice == '1':
             calculator()
@@ -613,10 +734,7 @@ def main():
         elif choice == '4':
             games()
         elif choice == '5':
-            to_do_list()
-        elif choice == '6':
-            weakly_study_planner()
-
+            To_Do_List()
 
         elif choice == '7':
             print("Goodbye!")
@@ -626,5 +744,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
